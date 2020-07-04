@@ -6,4 +6,15 @@
 .nav-link,
 .navbar-brand {
   color: white;
+  font-size: 120%;
+}
+
+.nav-item:hover {
+  background-color: #a4342c;
+  border-radius: 5px;
+  font-size: 150%;
+}
+
+.dropdown:hover {
+  font-size: 120%;
 }
