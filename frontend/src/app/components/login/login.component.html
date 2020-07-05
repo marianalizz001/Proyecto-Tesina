@@ -6,15 +6,17 @@
           Inicio de sesión
         </div>
         <div class="card-body">
-          <div class="form-login">
-            <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
-            <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+          <form class="form-login" (submit)="login()">
+            <input type="text" [(ngModel)]="user.email" name="userName" id="userName"
+              class="form-control input-sm chat-input" placeholder="username" required />
+            <input type="password" [(ngModel)]="user.password" name="userPassword" id="userPassword"
+              class="form-control input-sm chat-input" placeholder="password" required />
             <div class="wrapper">
               <span class="group-btn">
-                <a href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></a>
+                <button type="submit" class="btn btn-primary btn-md">Login <i class="fa fa-sign-in"></i></button>
               </span>
             </div>
-          </div>
+          </form>
         </div>
         <div class="card-footer text-muted">
           Eres nuevo?
