@@ -1,0 +1,18 @@
+.navbar {
+  background-color: #DF7401;
+  padding: 10px 0px 10px 10px;
+  -webkit-font-smoothing: antialiased;
+  font: normal 18px Roboto, arial, sans-serif;
+  font-family: 'Acme', sans-serif;
+}
+
+.nav-link,
+.navbar-brand {
+  color: white;
+  font-size: 120%;
+}
+
+.nav-item:hover {
+  background-color: #d14b3e;
+  border-radius: 5px;
+}
