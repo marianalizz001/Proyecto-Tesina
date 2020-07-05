@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/usuario/inicio/inicio.component';
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { RegistrarComponent } from './components/usuario/registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     HomeComponent,
     LoginComponent,
     InicioComponent,
+    RegistrarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
