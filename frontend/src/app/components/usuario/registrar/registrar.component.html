@@ -1,1 +1,24 @@
-<p>registrar works!</p>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-offset-5 col-md-4">
+      <div class="card text-center">
+        <div class="card-header">
+          Inicio de sesión
+        </div>
+        <div class="card-body">
+          <form class="form-registro" (submit)="registro()">
+            <input type="text" [(ngModel)]="user.email" name="userName" id="userName"
+              class="form-control input-sm chat-input" placeholder="username" required />
+            <input type="password" [(ngModel)]="user.password" name="userPassword" id="userPassword"
+              class="form-control input-sm chat-input" placeholder="password" required />
+            <div class="wrapper">
+              <span class="group-btn">
+                <button type="submit" class="btn btn-primary btn-md">Registrar <i class="fa fa-sign-in"></i></button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

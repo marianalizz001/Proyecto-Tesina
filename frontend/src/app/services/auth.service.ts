@@ -11,6 +11,10 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  registro(user) {
+    return this.http.post<any>(this.URL + '/registro', user);
+  }
+
   login(user): Observable<any> {
     return this.http.post<any>(this.URL + '/login', user);
   }
@@ -24,7 +28,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }

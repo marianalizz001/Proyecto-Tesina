@@ -10,8 +10,6 @@ router.post("/registro", async (req, res) => {
   const { email, password } = req.body;
   const newUser = new User({ email: email, password: md5(password) });
   await newUser.save();
-  const token = jwt.sign({ _id: newUser.id }, "secretKey");
-  res.status(200).json({ token });
 });
 
 router.get("/private-tasks", verifyToken, (req, res) => {
