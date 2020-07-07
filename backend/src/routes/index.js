@@ -34,6 +34,20 @@ router.post("/registro", async (req, res) => {
   });
 });
 
+router.get('/obtener', (req, res, next) => {
+  User.find((err, registro) => {
+    if (err) return next(err);
+    res.json(registro);
+  });
+});
+
+router.get('/obtener/:id', (req, res, next) => {
+  User.findOne({email:(req.params.email)}, (err, registro) => {
+    if (err) return next(err);
+    res.json(registro);
+  });
+});
+
 router.post("/login", async (req, res) => {
   const {
     email,
