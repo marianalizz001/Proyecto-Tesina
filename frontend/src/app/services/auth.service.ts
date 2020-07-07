@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  registro(user) {
+  registro(user): Observable<any> {
     return this.http.post<any>(this.URL + '/registro', user);
   }
 

@@ -1,4 +1,6 @@
-const { Router } = require("express");
+const {
+  Router
+} = require("express");
 const router = Router();
 const md5 = require("md5");
 
@@ -7,65 +9,48 @@ const User = require("../models/Users");
 const jwt = require("jsonwebtoken");
 
 router.post("/registro", async (req, res) => {
-  const { email, password } = req.body;
-  const newUser = new User({ email: email, password: md5(password) });
+  const {
+    tipo,
+    email,
+    password,
+    nombre,
+    apPat,
+    apMat
+  } = req.body;
+  const newUser = new User({
+    tipo: tipo,
+    email: email,
+    password: md5(password),
+    nombre: nombre,
+    apPat: apPat,
+    apMat: apMat
+  });
   await newUser.save();
-});
-
-router.get("/private-tasks", verifyToken, (req, res) => {
-  res.json([
-    {
-      _id: "1",
-      name: "task one",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-    {
-      _id: "2",
-      name: "task two",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-    {
-      _id: "3",
-      name: "task three",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-  ]);
-});
-
-router.get("/tasks", (req, res) => {
-  res.json([
-    {
-      _id: "1",
-      name: "task one",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-    {
-      _id: "2",
-      name: "task two",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-    {
-      _id: "3",
-      name: "task three",
-      description: "asdadasd",
-      date: "2019-11-06T15:50:18.921Z",
-    },
-  ]);
+  const token = jwt.sign({
+    _id: newUser.id
+  }, "secretKey");
+  res.status(200).json({
+    token
+  });
 });
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const {
+    email,
+    password
+  } = req.body;
+  const user = await User.findOne({
+    email
+  });
   if (!user) return res.status(401).send("El correo no existe");
   if (user.password !== md5(password))
     return res.status(401).send("Contraseña invalida");
-  const token = jwt.sign({ _id: user._id }, "secretKey");
-  return res.status(200).json({ token });
+  const token = jwt.sign({
+    _id: user._id
+  }, "secretKey");
+  return res.status(200).json({
+    token
+  });
 });
 
 function verifyToken(req, res, next) {
