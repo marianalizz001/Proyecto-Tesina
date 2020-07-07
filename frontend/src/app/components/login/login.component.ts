@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,15 @@ export class LoginComponent implements OnInit {
         console.log(res);
         this.router.navigate(['/usuario']);
       },
-      (err) => console.log(err)
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href>Why do I have this issue?</a>',
+        });
+        console.log('Este es mi error: ', err);
+      }
     );
   }
 }
