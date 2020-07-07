@@ -14,6 +14,7 @@ import { InicioComponent } from './components/usuario/inicio/inicio.component';
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { RegistrarComponent } from './components/usuario/registrar/registrar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RegistrarComponent } from './components/usuario/registrar/registrar.com
     LoginComponent,
     InicioComponent,
     RegistrarComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

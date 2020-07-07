@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+footer{
+    background: rgba(17, 61, 17, 0.883);
+    color: white;
+}
+
+.sociales ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.sociales ul li{
+    position: relative;
+    display: inline-block;
+}
+
+#icon{
+    padding-left: 5px;
+    color: white;
+}

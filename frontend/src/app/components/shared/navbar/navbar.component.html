@@ -1,53 +1,60 @@
-<nav class="navbar navbar-expand-lg row">
-  <div class="col-1" align="center">
-  </div>
-  <img class="" src=" assets/img/manzana.png" width="50px">
-  <a class="navbar-brand col-6" href="#">Nutrición y Vida</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
+  <!-- <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true" onclick="history.back()"></i> -->
+  <a class="float-right" class="navbar-brand" [routerLink] = "['home']"><img src="assets/img/manzana.png" width="50"></a>
+  <a class="navbar-brand" href="#">Nutrición y Vida</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse col-4" align="center" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-
+  
+  <div class="collapse navbar-collapse" id="navbarCollapse"> 
+    <ul class="navbar-nav ml-auto" id="items">
+      
       <ng-container *ngIf='!authService.logueado(); else logueado'>
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['home']">Inicio <span class="sr-only"></span></a>
+          <a class="nav-link" [routerLink]="['home']">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" [routerLink]="['login']">Login</a>
         </li>
       </ng-container>
+      
       <ng-template #logueado>
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['usuario']">Inicio <span class="sr-only"></span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['registrar']">Registrar <span class="sr-only"></span></a>
+          <a class="nav-link" href="#">Perfil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pacientes</a>
-        </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" width="150px" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Toma Medidas
+            Pacientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Ver</a>
+            <a class="dropdown-item" [routerLink]="['registrar']">Registrar</a>
           </div>
         </li>
-        <li class="nav-item">
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" width="150px" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dietas
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Ver</a>
+            <a class="dropdown-item" [routerLink]="['registrar']">Calcular</a>
+          </div>
+        </li>
+
+        <li class="nav-item active">
           <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
         </li>
       </ng-template>
 
-
     </ul>
-
   </div>
 </nav>
+
