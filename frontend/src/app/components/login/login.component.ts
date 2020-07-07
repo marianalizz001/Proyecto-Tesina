@@ -28,11 +28,10 @@ export class LoginComponent implements OnInit {
       (err) => {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: '<a href>Why do I have this issue?</a>',
+          title: 'Error',
+          text: 'Los datos son incorrectos',
+          footer: 'Intentalo de nuevo',
         });
-        console.log('Este es mi error: ', err);
       }
     );
   }
