@@ -9,8 +9,12 @@ import { Router } from '@angular/router';
 })
 export class RegistrarComponent implements OnInit {
   user = {
+    tipo: '',
     email: '',
     password: '',
+    nombre: '',
+    apPat: '',
+    apMat: ''
   };
 
   constructor(private authService: AuthService, private router: Router) {}

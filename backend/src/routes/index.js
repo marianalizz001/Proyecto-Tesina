@@ -41,8 +41,12 @@ router.get('/obtener', (req, res, next) => {
   });
 });
 
-router.get('/obtener/:id', (req, res, next) => {
-  User.findOne({email:(req.params.email)}, (err, registro) => {
+router.get('/obtener/:id', verifyToken, async (req, res, next) => {
+  const id = req.userId;
+  console.log(id);
+  await User.find({
+    _id: id
+  }, (err, registro) => {
     if (err) return next(err);
     res.json(registro);
   });

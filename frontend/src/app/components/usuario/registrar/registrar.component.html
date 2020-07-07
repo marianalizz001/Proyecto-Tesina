@@ -3,14 +3,23 @@
     <div class="col-md-offset-5 col-md-4">
       <div class="card text-center">
         <div class="card-header">
-          Inicio de sesión
+          Registrar Nutriologos
         </div>
         <div class="card-body">
           <form class="form-registro" (submit)="registro()">
             <input type="text" [(ngModel)]="user.email" name="userName" id="userName"
-              class="form-control input-sm chat-input" placeholder="username" required />
+              class="form-control input-sm chat-input" placeholder="Correo" required />
             <input type="password" [(ngModel)]="user.password" name="userPassword" id="userPassword"
-              class="form-control input-sm chat-input" placeholder="password" required />
+              class="form-control input-sm chat-input" placeholder="Contraseña" required />
+            <input type="text" [(ngModel)]="user.nombre" name="userNombre" id="userNombre"
+              class="form-control input-sm chat-input" placeholder="Nombre" required />
+            <input type="text" [(ngModel)]="user.apPat" name="userApPat" id="userApPat"
+              class="form-control input-sm chat-input" placeholder="Apellido Paterno" required />
+            <input type="text" [(ngModel)]="user.apMat" name="userApMaterno" id="userApMaterno"
+              class="form-control input-sm chat-input" placeholder="Apellido Materno" required />
+            <input type="text" [(ngModel)]="user.tipo" name="userTipo" id="userTipo"
+              class="form-control input-sm chat-input" placeholder= "Tipo = N"/>
+            <br>
             <div class="wrapper">
               <span class="group-btn">
                 <button type="submit" class="btn btn-primary btn-md">Registrar <i class="fa fa-sign-in"></i></button>

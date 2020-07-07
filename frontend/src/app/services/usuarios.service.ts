@@ -21,6 +21,7 @@ export class UsuariosService {
   }
 
   getUsuario( id:string ){
+    console.log(id);
     return this.http.get(`${this.URL}/obtener/${id}`);
   }
 
