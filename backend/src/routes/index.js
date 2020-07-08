@@ -41,10 +41,13 @@ router.get('/obtener', (req, res, next) => {
   });
 });
 
-router.get('/obtener/:id', (req, res, next) => {
-  User.findOne({email:(req.params.email)}, (err, registro) => {
+router.get('/obtener/id', verifyToken, async (req, res, next) => {
+  const id = req.userId;
+  await User.find({
+    _id: id
+  }, (err, registro) => {
     if (err) return next(err);
-    res.json(registro);
+    res.status(200).json(registro);
   });
 });
 
@@ -69,16 +72,16 @@ router.post("/login", async (req, res) => {
 
 function verifyToken(req, res, next) {
   if (!req.headers.authorization) {
-    return res.status(401).send("Unauhtorized Request");
+    return res.status(401).send('Unauhtorized Request ???');
   }
-  let token = req.headers.authorization.split(" ")[1];
-  if (token === "null") {
-    return res.status(401).send("Unauhtorized Request");
+  let token = req.headers.authorization.split(' ')[1];
+  if (token === 'null') {
+    return res.status(401).send('Unauhtorized Request llll');
   }
 
-  const payload = jwt.verify(token, "secretKey");
+  const payload = jwt.verify(token, 'secretKey');
   if (!payload) {
-    return res.status(401).send("Unauhtorized Request");
+    return res.status(401).send('Unauhtorized Request');
   }
   req.userId = payload._id;
   next();
